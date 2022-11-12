@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.vsu.cs.okshina_v_a.kg_task_2.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Canvas fx:id="drawingCanvas" width="800" height="500" onScroll="#onScroll" onMouseDragged="#onMouseDragged"
+            onMousePressed="#onMousePressed"/>
+
+    <Button fx:id="executeFunctionButton" minWidth="30" text="Нарисовать" onAction="#computeFunction"/>
+    <Button fx:id="deleteFunctionButton" minWidth="30" text="Очистить" onAction="#deleteFunction"/>
+</VBox>
