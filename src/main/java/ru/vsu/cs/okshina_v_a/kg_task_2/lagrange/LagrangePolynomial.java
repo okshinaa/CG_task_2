@@ -2,11 +2,13 @@ package ru.vsu.cs.okshina_v_a.kg_task_2.lagrange;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import ru.vsu.cs.okshina_v_a.kg_task_2.RealPoint;
+
 import java.util.ArrayList;
 
 public class LagrangePolynomial {
-    public int count = 0;
-    public ArrayList<Point> points = new ArrayList<Point>();
+    //public int count = 0;
+    public ArrayList<RealPoint> points = new ArrayList<RealPoint>();
 
     //проверяем, есть ли точка с такой х-координатой в массиве points
     public boolean checkPoint(double xn, double yn) {
@@ -37,11 +39,12 @@ public class LagrangePolynomial {
 
     //подстановка x0 в многочлен Лагранжа
     public double doLagrange(double x0) {
+        normArr();
         double y0 = 0;//значение многочлена в точке y0
         double step;
         for (int i = 0; i < points.size(); i++) {
             step = points.get(i).y;
-            //считаем множитель при i-ом значении
+           //считаем множитель при i-ом значении
             for (int j = 0; j < points.size(); j++) {
                 if (i!=j) {
                     step = step * (x0 - points.get(j).x) / (points.get(i).x - points.get(j).x);
@@ -50,24 +53,5 @@ public class LagrangePolynomial {
             y0 += step;
         }
         return y0;
-    }
-
-    //отрисовка графика
-    public void drawGraphic(GraphicsContext g) {
-        if (points.size() == 0) {
-            return;
-        }
-        double sty;
-        g.beginPath();
-        g.setFill(Color.BLACK);
-        g.moveTo(300 + 75 * points.get(0).x, 300 - 75 * points.get(0).y);
-        for (int i = 0; i < points.size() - 1; i++) {
-            for (double stx = points.get(i).x; stx <= points.get(i + 1).x; stx += 0.01) {
-                sty = doLagrange(stx);
-                g.lineTo(300 + 75 * stx, 300 - 75 * sty);
-            }
-        }
-        g.stroke();
-        g.closePath();
     }
 }

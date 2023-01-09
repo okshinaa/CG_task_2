@@ -42,8 +42,7 @@ public class ScreenConverter {
         cornerX += delta.getX();
     }
 
-    public double getRealXFromScreen(double x) {
-        return cornerX + x * realWidth / screenWidth;
+    public double getRealXFromScreen(double x) {return cornerX + x * realWidth / screenWidth;
     }
 
     public void setScreenWidth(int screenWidth) {

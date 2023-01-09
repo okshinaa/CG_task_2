@@ -1,8 +1,8 @@
 package ru.vsu.cs.okshina_v_a.kg_task_2;
 
 public final class RealPoint {
-    private final double x;
-    private final double y;
+    public double x;
+    public double y;
 
     public RealPoint(double x, double y) {
         this.x = x;
